@@ -112,12 +112,20 @@ export const BOT_RESPONSES: BotResponse[] = [
   },
 ];
 
+// Solo se revisa si ninguna regla de arriba matcheó — es más genérico a propósito ("sema" solo,
+// sin "automática"/"CBD"/"fotoperiódica"/etc.), así que va después para no taparle la respuesta
+// puntual a preguntas como "¿es legal comprar semillas?" o "quiero comprar semillas".
+const SEMILLA_GENERICA = ["sema", "semilla", "que otras variedades", "que variedades", "que tenes", "que hay disponible"];
+
 export function getBotResponse(input: string): string {
   const normalized = input.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
   for (const entry of BOT_RESPONSES) {
     if (entry.keywords.some((kw) => normalized.includes(kw.normalize("NFD").replace(/[̀-ͯ]/g, "")))) {
       return entry.response;
     }
+  }
+  if (SEMILLA_GENERICA.some((kw) => normalized.includes(kw))) {
+    return "Tengo variedad de semillas 🌱 Contame qué buscás: ¿automática, fotoperiódica o CBD? Así te tiro las opciones justas del stock real.";
   }
   return "No tengo esa info específica en el catálogo ahora mismo — te derivo con una persona del equipo para que te ayude mejor. Mientras tanto, ¿te puedo ayudar con precio, stock o envíos?";
 }
