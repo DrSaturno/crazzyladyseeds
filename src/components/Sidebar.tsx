@@ -30,16 +30,8 @@ export default function Sidebar({ onNavigate }: SidebarProps) {
         <p className="text-[9px] font-bold tracking-widest text-white/30 mt-1">PANEL INTERNO</p>
       </Link>
 
-      {/* Salida a la tienda pública */}
-      <Link
-        to="/"
-        className="mx-2 mt-2 flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium text-white/50 hover:text-white hover:bg-navy-700 transition-colors"
-      >
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-        </svg>
-        Ver la tienda
-      </Link>
+      {/* La tienda pública ahora es un repo aparte (crazyladyweb) — se linkea
+          acá con la URL real apenas esté desplegada. Ver docs/web.md § Dos repos. */}
 
       {/* Nav */}
       <nav className="flex-1 px-2 py-3 space-y-0.5 overflow-y-auto">
