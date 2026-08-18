@@ -67,7 +67,9 @@ export default function Sidebar({ onNavigate }: SidebarProps) {
           </div>
           <span className={`w-2 h-2 rounded-full flex-shrink-0 ${botActivo ? "bg-green-400 animate-pulse" : "bg-red-500"}`} />
         </button>
-        <p className="text-[10px] text-white/25 text-center mt-2">By 🪐 DrSaturno</p>
+        <p className="text-[10px] text-white/25 text-center mt-2">
+          By <span style={{ filter: "brightness(0) invert(1)", opacity: 0.25 }}>🪐</span> DrSaturno
+        </p>
       </div>
 
       {/* Footer */}
