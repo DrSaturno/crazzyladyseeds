@@ -67,8 +67,13 @@ export default function Sidebar({ onNavigate }: SidebarProps) {
           </div>
           <span className={`w-2 h-2 rounded-full flex-shrink-0 ${botActivo ? "bg-green-400 animate-pulse" : "bg-red-500"}`} />
         </button>
-        <p className="text-[10px] text-white/25 text-center mt-2">
-          By <span style={{ filter: "brightness(0) invert(1)", opacity: 0.25 }}>🪐</span> DrSaturno
+        <p className="text-[10px] text-white/25 text-center mt-2 flex items-center justify-center gap-1">
+          By
+          <svg className="w-3 h-3 flex-shrink-0" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="5.5" fill="currentColor" />
+            <ellipse cx="12" cy="12" rx="11" ry="3.2" stroke="currentColor" strokeWidth="1.6" transform="rotate(-24 12 12)" />
+          </svg>
+          DrSaturno
         </p>
       </div>
 
