@@ -115,7 +115,7 @@ export default function Dashboard() {
           {MOCK_CONVERSATIONS.map((c) => (
             <button
               key={c.id}
-              onClick={() => navigate(`/conversaciones?id=${c.id}`)}
+              onClick={() => navigate(`/admin/conversaciones?id=${c.id}`)}
               className="w-full text-left px-4 md:px-5 py-3 flex items-center gap-3 hover:bg-navy-600/50 transition cursor-pointer group"
             >
               <div className="w-8 h-8 rounded-full bg-cls-primary/20 flex items-center justify-center text-sm font-bold text-white flex-shrink-0 relative">

@@ -175,7 +175,7 @@ export default function CRM() {
                 </Field>
                 <Field label="Notas">{selected.notas || "Sin notas"}</Field>
                 <Field label="Última actividad">{selected.ultimaActividad}</Field>
-                <button onClick={() => navigate("/conversaciones")} className="w-full py-2 bg-cls-primary hover:bg-cls-primary-dark text-white text-xs font-bold rounded-lg transition">
+                <button onClick={() => navigate("/admin/conversaciones")} className="w-full py-2 bg-cls-primary hover:bg-cls-primary-dark text-white text-xs font-bold rounded-lg transition">
                   Abrir conversación →
                 </button>
               </div>

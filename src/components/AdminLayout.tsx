@@ -1,0 +1,60 @@
+import { useState } from "react";
+import { Outlet } from "react-router-dom";
+import Sidebar from "./Sidebar";
+import MobileNav from "./MobileNav";
+
+export default function AdminLayout() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const closeSidebar = () => setSidebarOpen(false);
+
+  return (
+    <div className="flex h-screen overflow-hidden bg-navy-800">
+      {/* Desktop sidebar */}
+      <div className="hidden md:flex">
+        <Sidebar />
+      </div>
+
+      {/* Mobile sidebar overlay */}
+      {sidebarOpen && (
+        <div className="fixed inset-0 z-40 bg-black/60 md:hidden" onClick={closeSidebar} />
+      )}
+
+      {/* Mobile sidebar drawer */}
+      <div
+        className={`fixed top-0 left-0 h-full z-50 md:hidden transition-transform duration-300 ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <Sidebar onNavigate={closeSidebar} />
+      </div>
+
+      {/* Main content */}
+      <main className="flex-1 flex flex-col overflow-hidden">
+        {/* Mobile top bar */}
+        <div className="md:hidden flex items-center justify-between px-4 py-3 bg-navy-900 border-b border-navy-500 flex-shrink-0">
+          <button
+            onClick={() => setSidebarOpen(true)}
+            className="p-2 rounded-lg hover:bg-navy-700 transition text-white"
+            aria-label="Abrir menú"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <p className="text-sm font-black cls-wordmark">CRAZY LADY SEEDS</p>
+          <div className="w-9" />
+        </div>
+
+        {/* Page content */}
+        <div className="flex-1 overflow-hidden">
+          <Outlet />
+        </div>
+
+        {/* Mobile bottom nav */}
+        <div className="md:hidden flex-shrink-0">
+          <MobileNav />
+        </div>
+      </main>
+    </div>
+  );
+}
